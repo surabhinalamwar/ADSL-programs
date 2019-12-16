@@ -1,0 +1,154 @@
+package p2;
+import java.util.*;
+abstract class stack
+{
+	int top;
+	abstract public void push();
+	abstract public void pop();
+	abstract public void display();
+	public boolean empty()
+	    {
+	    	if(top==-1)
+	    		return true;
+	    	else 
+	    		return false;
+	    }
+    public boolean full()
+	    {
+	    	if(top==10)
+	    		return true;
+	    	else 
+	    		return false;
+	    }
+
+}
+class IntTemplate extends stack{
+	int ele[]=new int[10];
+	public IntTemplate()
+	{
+		top=-1;
+	}
+	public void push()
+	{
+	    RuntimeException re= new RuntimeException("Overflow!!");
+		try {
+			if(this.full())
+				throw re;
+		    }
+		catch(RuntimeException ex)
+		{
+			System.out.println("Exception caught in push"+ex);
+		}
+		System.out.println("Enter int element");
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		top++;
+		ele[top]=n;
+	}
+    public void pop()
+    {
+    	RuntimeException re= new RuntimeException("Underrflow!!");
+		try {
+			if(this.empty())
+				throw re;
+		    }
+		catch(RuntimeException ex)
+		{
+			System.out.println("Exception caught in pop"+ex);
+		}
+    	top--;
+    }
+    public void display()
+ {
+    	RuntimeException re= new RuntimeException("Underflow!!");
+		try {
+			if(this.empty())
+				throw re;
+		    }
+		catch(RuntimeException ex)
+		{
+			System.out.println("Exception caught in display"+ex);
+		}
+	 System.out.println();
+	 int i=0;
+	 while(i!=top+1)
+	 {
+		 System.out.println(ele[i]+"  ");
+		 i++;
+	 }
+ }
+}
+class CharTemplate extends stack{
+	char ele[]=new char[10];
+	public CharTemplate()
+	{
+		top=-1;
+	}
+	public void push()
+	{
+		RuntimeException re= new RuntimeException("Overflow!!");
+		try {
+			if(this.full())
+				throw re;
+		    }
+		catch(RuntimeException ex)
+		{
+			System.out.println("Exception caught in push"+ex);
+		}
+		System.out.println("Enter char element");
+		Scanner sc=new Scanner(System.in);
+		char n=sc.next().charAt(0);
+		top++;
+		ele[top]=n;
+	}
+    public void pop()
+    {
+    	RuntimeException re= new RuntimeException("Underrflow!!");
+		try {
+			if(this.empty())
+				throw re;
+		    }
+		catch(RuntimeException ex)
+		{
+			System.out.println("Exception caught in pop"+ex);
+		}
+    	top--;
+    }
+    public void display()
+ {
+    	RuntimeException re= new RuntimeException("Underflow!!");
+		try {
+			if(this.empty())
+				throw re;
+		    }
+		catch(RuntimeException ex)
+		{
+			System.out.println("Exception caught in display"+ex);
+		}
+	 System.out.println();
+	 int i=0;
+	 while(i!=top+1)
+	 {
+		 System.out.println(ele[i]+"  ");
+		 i++;
+	 }
+ }
+}
+
+public class temp
+{
+	public static void main(String a[]) throws Exception
+	{
+		IntTemplate t1=new IntTemplate();
+		t1.push();
+		t1.display();
+		CharTemplate t2=new CharTemplate();
+		t2.push();
+		t2.push();
+		t2.display();
+		t2.pop();
+		t2.display();
+		t2.push();
+		t2.display();
+	}
+}

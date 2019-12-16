@@ -1,0 +1,86 @@
+import p1.Common;
+import java.util.*;
+class node
+{
+	public int data;
+	public node next;
+    public node()
+    {
+    	data=0;
+    	next=null;
+    }
+    public node(int d,node n)
+    {
+    	data=d;
+    	next=n;
+    }   
+}
+public class demo implements Common
+{
+	node start;
+	node end;
+	int size;
+	public demo()
+	{
+		start=end=null;
+		size=0;
+	}
+	public boolean empty()
+	{
+		if(start==null)
+			return true;
+		else
+			return false;
+	}
+	public void insert(int n)
+	{
+		node temp=new node(n,null);
+		size++;
+		if(start==null)
+		{
+			start=end=temp;
+		}
+		else
+		{
+			end.next=temp;
+			end=temp;
+		}
+	}
+	public int size()
+	{
+		return size;
+	}
+  public void display()
+	{
+		if(size==0)
+			System.out.println("Empty");
+		else if(start.next==null)
+			System.out.println(start.data);
+		else
+		{
+			node temp=start;
+			System.out.println();
+			while(temp.next!=null)
+			{
+				System.out.print(temp.data+"->");
+				temp=temp.next;
+			}
+			System.out.print(temp.data+"->");
+		}
+	}
+	    public static void main(String[] args)
+	    {   
+	        demo sl=new demo();
+	        Scanner sc=new Scanner(System.in);
+	        System.out.println("Enter no");
+	        while (sc.hasNextInt())
+	        {
+	            int no=sc.nextInt();
+	            sl.insert(no);
+	        }
+	        
+	        sl.display();
+	        sc.close();
+	    }
+	    
+}

@@ -1,0 +1,8 @@
+package p1;
+public interface Common {
+	void insert(int n);
+	//int remove();
+	boolean empty();
+	int size();
+	void display();
+}
